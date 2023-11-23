@@ -13,6 +13,9 @@ import com.example.myapplication.base.Law;
 import com.example.myapplication.base.Question;
 
 import java.io.IOException;
+import java.util.Arrays;
+
+import javax.crypto.SecretKey;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +29,29 @@ public class MainActivity extends AppCompatActivity {
 
         Question question = dataBaseHelper.getQuestion(1);
 
-        String image = question.getImage();
+        String image = question.getIntrodution();
+        SecretKey aaa = null;
+        String mahoa = "";
+        try {
+            aaa = EncryptionUtils.generateSecretKey();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            mahoa = EncryptionUtils.encryptText(image, aaa);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        String giaima;
+        try {
+            giaima = EncryptionUtils.decryptText(mahoa, aaa);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         TextView textView = (TextView) findViewById(R.id.tv);
 
-        textView.setText(image);
+        textView.setText(mahoa);
 
     }
     void setDatabase(){

@@ -198,7 +198,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public Question getQuestion(int id) {
         Question question = new Question();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_QUESTION, new String[] {KEY_ID, KEY_TYPE, KEY_INTRODUTION, KEY_IMAGE, KEY_QUESTION, KEY_ANSWER},
+        Cursor cursor = db.query(TABLE_QUESTION,
+                new String[] {KEY_ID, KEY_TYPE, KEY_INTRODUTION, KEY_IMAGE, KEY_QUESTION, KEY_ANSWER},
                 KEY_ID + "=?",
                 new String[] {String.valueOf(id)}, null, null, null, null);
         if  (cursor != null) {
