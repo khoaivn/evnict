@@ -31,6 +31,18 @@ public class MainActivity extends AppCompatActivity {
         Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
         Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
 
+        dataBaseHelper.addKhanhhang(khachhang);
+        dataBaseHelper.addKhanhhang(khachhang1);
+
+        String name = dataBaseHelper.getKhanhhang(1).get_name();
+
+        TextView tv = (TextView) findViewById(R.id.tv_name);
+
+        tv.setText(name);
+
+        dataBaseHelper.close();
+
+
     }
     void setDatabase(){
         SharedPreferences mPref = getPreferences(MODE_PRIVATE);

@@ -27,8 +27,6 @@ public class DataBaseHelper extends SQLiteOpenHelper
     private static String DB_NAME ="testoto.sqlite";// Database name
     private SQLiteDatabase mDataBase;
     private final Context mContext;
-
-
     public static final String TABLE_QUESTION = "tbl_question";
     public static final String TABLE_KHACHHANG = "tbl_khachhang";
     public static final String TABLE_QUESTION_600 = "tbl_question_600";
@@ -170,7 +168,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         values.put(KEY_CHI_SO, khachhang.get_chi_so());
         values.put(KEY_NOTE, khachhang.get_note());
 
-        db.insert(TABLE_QUESTION, null, values);
+        db.insert(TABLE_KHACHHANG, null, values);
         db.close();
     }
     public void addQuestion(Question question) {
