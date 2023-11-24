@@ -201,7 +201,12 @@ public class DataBaseHelper extends SQLiteOpenHelper
         Cursor cursor = db.query(TABLE_QUESTION,
                 new String[] {KEY_ID, KEY_TYPE, KEY_INTRODUTION, KEY_IMAGE, KEY_QUESTION, KEY_ANSWER},
                 KEY_ID + "=?",
-                new String[] {String.valueOf(id)}, null, null, null, null);
+                new String[] {String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
         if  (cursor != null) {
             cursor.moveToFirst(); //De sai
             question.setID(Integer.parseInt(cursor.getString(0)));
