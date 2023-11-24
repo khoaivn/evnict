@@ -1,20 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextFullName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="Họ và tên"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="25sp"
+        android:text="Nguyen Van B"
+        android:textColor="#009688"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/editTextPreviousReading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="Chỉ số điện tháng trước"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_chi_so_thang_truoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="25sp"
+        android:text="3000"
+        android:textColor="#009688"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/editTextCurrentReading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="Chỉ số điện tháng này"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/tv_chi_so_thang_nay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="25sp"
+        android:text="3100"
+        android:textColor="#009688"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/editTextUnitPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="Đơn giá"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/tv_don_gia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="25sp"
+        android:text="3300"
+        android:textColor="#009688"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/textViewTotalAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="Thành tiền: "
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_thanh_tien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="25sp"
+        android:text="1000000"
+        android:textColor="#009688"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+
+
+</LinearLayout>

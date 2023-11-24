@@ -9,6 +9,7 @@ public class Khachhang {
     int _chi_so;
     String _note;
 
+
     public String get_note() {
         return _note;
     }
