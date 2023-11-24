@@ -10,6 +10,22 @@ public class Khachhang {
     String _note;
 
 
+    public Khachhang(String name, String code, int thang, int nam, int chi_so, String note){
+        this._name = name;
+        this._code = code;
+        this._thang = thang;
+        this._nam = nam;
+        this._chi_so = chi_so;
+        this._note = note;
+    }
+
+    public Khachhang() {
+    }
+
+    public Khachhang(String _name) {
+        this._name = _name;
+    }
+
     public String get_note() {
         return _note;
     }

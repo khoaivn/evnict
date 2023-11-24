@@ -30,6 +30,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
 
     public static final String TABLE_QUESTION = "tbl_question";
+    public static final String TABLE_KHACHHANG = "tbl_khachhang";
     public static final String TABLE_QUESTION_600 = "tbl_question_600";
     private static final String TABLE_DETHI = "tbl_dethi";
     private static final String TABLE_DETHI_600 = "tbl_dethi_600";
@@ -65,6 +66,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_NOTE = "note";
     private static final String KEY_YESNO = "yesno";
+    private static final String KEY_THANG = "thang";
+    private static final String KEY_NAM = "nam";
+    private static final String KEY_CHI_SO = "chi_so";
 
     public DataBaseHelper(Context context)
     {
@@ -155,6 +159,20 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+    public void addKhanhhang(Khachhang khachhang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_NAME, khachhang.get_name());
+        values.put(KEY_CODE, khachhang.get_code());
+        values.put(KEY_THANG, khachhang.get_thang());
+        values.put(KEY_NAM, khachhang.get_nam());
+        values.put(KEY_CHI_SO, khachhang.get_chi_so());
+        values.put(KEY_NOTE, khachhang.get_note());
+
+        db.insert(TABLE_QUESTION, null, values);
+        db.close();
+    }
     public void addQuestion(Question question) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -228,6 +246,32 @@ public class DataBaseHelper extends SQLiteOpenHelper
         cursor.close();
         db.close();
         return question;
+    }
+    public Khachhang getKhanhhang(int id) {
+        Khachhang khachhang = new Khachhang();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_KHACHHANG,
+                new String[] {KEY_ID, KEY_NAME, KEY_CODE, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
+                KEY_ID + "=?",
+                new String[] {String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
+        if  (cursor != null) {
+            cursor.moveToFirst(); //De sai
+            khachhang.set_id(Integer.parseInt(cursor.getString(0)));
+            khachhang.set_name(cursor.getString(1));
+            khachhang.set_code(cursor.getString(2));
+            khachhang.set_thang(Integer.parseInt(cursor.getString(3)));
+            khachhang.set_nam(Integer.parseInt(cursor.getString(4)));
+            khachhang.set_chi_so(Integer.parseInt(cursor.getString(5)));
+            khachhang.set_note(cursor.getString(6));
+        }
+        cursor.close();
+        db.close();
+        return khachhang;
     }
     public Question_600 getQuestion600(int id) {
         Question_600 question = new Question_600();

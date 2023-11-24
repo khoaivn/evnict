@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.myapplication.base.DataBaseHelper;
+import com.example.myapplication.base.Khachhang;
 import com.example.myapplication.base.Law;
 import com.example.myapplication.base.Question;
 
@@ -27,31 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
 
-        Question question = dataBaseHelper.getQuestion(1);
-
-        String image = question.getIntrodution();
-        SecretKey aaa = null;
-        String mahoa = "";
-        try {
-            aaa = EncryptionUtils.generateSecretKey();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            mahoa = EncryptionUtils.encryptText(image, aaa);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        String giaima;
-        try {
-            giaima = EncryptionUtils.decryptText(mahoa, aaa);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        TextView textView = (TextView) findViewById(R.id.tv);
-
-        textView.setText(mahoa);
+        Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
+        Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
 
     }
     void setDatabase(){
