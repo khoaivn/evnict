@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
 //        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
-    void setLayoutbyCode(String code_khachhang){
+    void setLayoutbyCode(String code_khachhang, int thang, int nam){
         Khachhang khachhang = dataBaseHelper.getKhanhhangByCode(code_khachhang);
         ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
 //        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
