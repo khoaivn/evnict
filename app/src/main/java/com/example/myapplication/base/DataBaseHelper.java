@@ -207,9 +207,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public Du_lieu_thang get_du_lieu_thang(int id_khachhang, int thang, int nam) {
         Du_lieu_thang duLieuThang = new Du_lieu_thang();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_KHACHHANG,
+        Cursor cursor = db.query(TABLE_DU_LIEU_THANG,
                 new String[] {KEY_ID, KEY_ID_KHACHHANG, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
-                 KEY_ID_KHACHHANG + "=? AND " + KEY_THANG + "=? AND" + KEY_NAM + "=?" ,
+                 KEY_ID_KHACHHANG + "=? AND " + KEY_THANG + "=? AND " + KEY_NAM + "=?" ,
                 new String[] {String.valueOf(id_khachhang), String.valueOf(thang), String.valueOf(nam)},
                 null,
                 null,
