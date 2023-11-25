@@ -10,13 +10,8 @@ import android.widget.TextView;
 
 import com.example.myapplication.base.DataBaseHelper;
 import com.example.myapplication.base.Khachhang;
-import com.example.myapplication.base.Law;
-import com.example.myapplication.base.Question;
 
 import java.io.IOException;
-import java.util.Arrays;
-
-import javax.crypto.SecretKey;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
 //        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
     void setLayoutbyCode(String code_khachhang, int thang, int nam){
+        int thang_truoc;
+        int nam_truoc;
+        if (thang == 1) {
+            thang_truoc = 12;
+            nam_truoc = nam - 1;
+        } else {
+            thang_truoc = thang - 1;
+            nam_truoc = nam;
+        }
+
         Khachhang khachhang = dataBaseHelper.getKhanhhangByCode(code_khachhang);
         ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
 //        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
