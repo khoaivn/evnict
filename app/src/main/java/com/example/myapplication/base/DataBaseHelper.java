@@ -271,6 +271,32 @@ public class DataBaseHelper extends SQLiteOpenHelper
         db.close();
         return khachhang;
     }
+    public Khachhang getKhanhhangByCode(String code_khachhang) {
+        Khachhang khachhang = new Khachhang();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_KHACHHANG,
+                new String[] {KEY_ID, KEY_NAME, KEY_CODE, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
+                KEY_CODE + "=?",
+                new String[] {code_khachhang},
+                null,
+                null,
+                null,
+                null);
+
+        if  (cursor != null) {
+            cursor.moveToFirst(); //De sai
+            khachhang.set_id(Integer.parseInt(cursor.getString(0)));
+            khachhang.set_name(cursor.getString(1));
+            khachhang.set_code(cursor.getString(2));
+            khachhang.set_thang(Integer.parseInt(cursor.getString(3)));
+            khachhang.set_nam(Integer.parseInt(cursor.getString(4)));
+            khachhang.set_chi_so(Integer.parseInt(cursor.getString(5)));
+            khachhang.set_note(cursor.getString(6));
+        }
+        cursor.close();
+        db.close();
+        return khachhang;
+    }
     public Question_600 getQuestion600(int id) {
         Question_600 question = new Question_600();
         SQLiteDatabase db = this.getReadableDatabase();
