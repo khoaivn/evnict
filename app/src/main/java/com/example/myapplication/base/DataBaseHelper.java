@@ -163,9 +163,6 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         values.put(KEY_NAME, khachhang.get_name());
         values.put(KEY_CODE, khachhang.get_code());
-        values.put(KEY_THANG, khachhang.get_thang());
-        values.put(KEY_NAM, khachhang.get_nam());
-        values.put(KEY_CHI_SO, khachhang.get_chi_so());
         values.put(KEY_NOTE, khachhang.get_note());
 
         db.insert(TABLE_KHACHHANG, null, values);
@@ -249,7 +246,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         Khachhang khachhang = new Khachhang();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_KHACHHANG,
-                new String[] {KEY_ID, KEY_NAME, KEY_CODE, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
+                new String[] {KEY_ID, KEY_NAME, KEY_CODE, KEY_NOTE},
                 KEY_ID + "=?",
                 new String[] {String.valueOf(id)},
                 null,
@@ -262,10 +259,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
             khachhang.set_id(Integer.parseInt(cursor.getString(0)));
             khachhang.set_name(cursor.getString(1));
             khachhang.set_code(cursor.getString(2));
-            khachhang.set_thang(Integer.parseInt(cursor.getString(3)));
-            khachhang.set_nam(Integer.parseInt(cursor.getString(4)));
-            khachhang.set_chi_so(Integer.parseInt(cursor.getString(5)));
-            khachhang.set_note(cursor.getString(6));
+            khachhang.set_note(cursor.getString(3));
         }
         cursor.close();
         db.close();
@@ -288,10 +282,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
             khachhang.set_id(Integer.parseInt(cursor.getString(0)));
             khachhang.set_name(cursor.getString(1));
             khachhang.set_code(cursor.getString(2));
-            khachhang.set_thang(Integer.parseInt(cursor.getString(3)));
-            khachhang.set_nam(Integer.parseInt(cursor.getString(4)));
-            khachhang.set_chi_so(Integer.parseInt(cursor.getString(5)));
-            khachhang.set_note(cursor.getString(6));
+            khachhang.set_note(cursor.getString(3));
         }
         cursor.close();
         db.close();

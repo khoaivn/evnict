@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //        Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
 //        Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
 
-        dataBaseHelper.addKhanhhang(new Khachhang("Pham Hong Phuc", "HN05", 11, 2023, 4550, ""));
+//        dataBaseHelper.addKhanhhang(new Khachhang("Pham Hong Phuc", "HN05", 11, 2023, 4550, ""));
 //        dataBaseHelper.addKhanhhang(khachhang1);
 
 //        String name = dataBaseHelper.getKhanhhang(1).get_name();
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 //        TextView tv = (TextView) findViewById(R.id.tv_name);
 //
 //        tv.setText(name);
-        setLayoutbyCode("HN05");
+//        setLayoutbyCode("HN05");
 
         dataBaseHelper.close();
 
@@ -50,22 +50,22 @@ public class MainActivity extends AppCompatActivity {
     void setLayout(int id_khach_hang){
         Khachhang khachhang = dataBaseHelper.getKhanhhang(id_khach_hang);
         ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
-        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
-        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
+//        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
+//        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
         ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText("0");
-        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
+//        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
         ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
-        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
+//        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
     void setLayoutbyCode(String code_khachhang){
         Khachhang khachhang = dataBaseHelper.getKhanhhangByCode(code_khachhang);
         ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
-        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
-        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
+//        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
+//        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
         ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText("0");
-        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
+//        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
         ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
-        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
+//        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
     void setDatabase(){
         SharedPreferences mPref = getPreferences(MODE_PRIVATE);
