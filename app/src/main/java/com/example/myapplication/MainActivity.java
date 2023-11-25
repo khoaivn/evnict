@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 //        TextView tv = (TextView) findViewById(R.id.tv_name);
 //
 //        tv.setText(name);
-//        setLayoutbyCode("HN05");
+        setLayoutbyid(1,11,2023);
 
-        Du_lieu_thang duLieuThang = dataBaseHelper.get_du_lieu_thang(1,10,2023);
-        Log.d("aaa", String.valueOf(duLieuThang.get_chi_so()));
+//        Du_lieu_thang duLieuThang = dataBaseHelper.get_du_lieu_thang(1,10,2023);
+//        Log.d("aaa", String.valueOf(duLieuThang.get_chi_so()));
 
         dataBaseHelper.close();
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
 //        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
-    void setLayoutbyCode(String code_khachhang, int thang, int nam){
+    void setLayoutbyid(int id_khachhang, int thang, int nam){
         int thang_truoc;
         int nam_truoc;
         if (thang == 1) {
@@ -67,15 +67,16 @@ public class MainActivity extends AppCompatActivity {
             thang_truoc = thang - 1;
             nam_truoc = nam;
         }
-
-        Khachhang khachhang = dataBaseHelper.getKhanhhangByCode(code_khachhang);
+        Du_lieu_thang dl_thang_nay = dataBaseHelper.get_du_lieu_thang(id_khachhang, thang, nam);
+        Du_lieu_thang dl_thang_truoc = dataBaseHelper.get_du_lieu_thang(id_khachhang, thang_truoc, nam_truoc);
+        Khachhang khachhang = dataBaseHelper.getKhanhhang(id_khachhang);
         ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
-//        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
-//        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
-        ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText("0");
-//        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
+        String thang_nam = thang + "/" + nam;
+        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
+        ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText(Integer.toString(dl_thang_truoc.get_chi_so()));
+        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(dl_thang_nay.get_chi_so()));
         ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
-//        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
+        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * (dl_thang_nay.get_chi_so() - dl_thang_truoc.get_chi_so())));
     }
     void setDatabase(){
         SharedPreferences mPref = getPreferences(MODE_PRIVATE);
