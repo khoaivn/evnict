@@ -44,14 +44,6 @@ public class MainActivity extends AppCompatActivity {
         dataBaseHelper.add_du_lieu_thang(new Du_lieu_thang(4, 10, 2023, 231,""));
         dataBaseHelper.add_du_lieu_thang(new Du_lieu_thang(4, 11, 2023, 390,""));
 
-//        dataBaseHelper.addKhanhhang(new Khachhang("Pham Hong Phuc", "HN05", 11, 2023, 4550, ""));
-//        dataBaseHelper.addKhanhhang(khachhang1);
-
-//        String name = dataBaseHelper.getKhanhhang(1).get_name();
-//
-//        TextView tv = (TextView) findViewById(R.id.tv_name);
-//
-//        tv.setText(name);
         setLayoutbyid(4,11,2023);
 
 
