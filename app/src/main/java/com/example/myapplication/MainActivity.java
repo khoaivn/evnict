@@ -20,29 +20,42 @@ import javax.crypto.SecretKey;
 
 public class MainActivity extends AppCompatActivity {
 
+    DataBaseHelper dataBaseHelper;
+    int don_gia = 3300;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setDatabase();
 
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
+        dataBaseHelper = new DataBaseHelper(this);
 
-        Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
-        Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
+//        Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
+//        Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
 
-        dataBaseHelper.addKhanhhang(khachhang);
-        dataBaseHelper.addKhanhhang(khachhang1);
+//        dataBaseHelper.addKhanhhang(khachhang);
+//        dataBaseHelper.addKhanhhang(khachhang1);
 
-        String name = dataBaseHelper.getKhanhhang(1).get_name();
-
-        TextView tv = (TextView) findViewById(R.id.tv_name);
-
-        tv.setText(name);
+//        String name = dataBaseHelper.getKhanhhang(1).get_name();
+//
+//        TextView tv = (TextView) findViewById(R.id.tv_name);
+//
+//        tv.setText(name);
+        setLayout(1);
 
         dataBaseHelper.close();
 
 
+    }
+    void setLayout(int id_khach_hang){
+        Khachhang khachhang = dataBaseHelper.getKhanhhang(id_khach_hang);
+        ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
+        String thang_nam = khachhang.get_thang() + "/" + khachhang.get_nam();
+        ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
+        ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText("0");
+        ((TextView) findViewById(R.id.tv_chi_so_thang_nay)).setText(Integer.toString(khachhang.get_chi_so()));
+        ((TextView) findViewById(R.id.tv_don_gia)).setText(Integer.toString(don_gia));
+        ((TextView) findViewById(R.id.tv_thanh_tien)).setText(Integer.toString(don_gia * khachhang.get_chi_so()));
     }
     void setDatabase(){
         SharedPreferences mPref = getPreferences(MODE_PRIVATE);
