@@ -157,6 +157,19 @@ public class DataBaseHelper extends SQLiteOpenHelper
         db.insert(TABLE_KHACHHANG, null, values);
         db.close();
     }
+    public void add_du_lieu_thang(Du_lieu_thang duLieuThang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_ID_KHACHHANG, duLieuThang.get_id_khach_hang());
+        values.put(KEY_THANG, duLieuThang.get_thang());
+        values.put(KEY_NAM, duLieuThang.get_nam());
+        values.put(KEY_CHI_SO, duLieuThang.get_chi_so());
+        values.put(KEY_NOTE, duLieuThang.get_note());
+
+        db.insert(TABLE_DU_LIEU_THANG, null, values);
+        db.close();
+    }
 
     public Khachhang getKhanhhang(int id) {
         Khachhang khachhang = new Khachhang();
@@ -181,6 +194,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         db.close();
         return khachhang;
     }
+
     public Khachhang getKhanhhangByCode(String code_khachhang) {
         Khachhang khachhang = new Khachhang();
         SQLiteDatabase db = this.getReadableDatabase();

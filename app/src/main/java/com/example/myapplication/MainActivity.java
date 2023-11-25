@@ -15,20 +15,34 @@ import com.example.myapplication.base.Khachhang;
 
 import java.io.IOException;
 
+import javax.crypto.SecretKey;
+
 public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
     int don_gia = 3300;
+    SecretKey secretKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setDatabase();
+        try {
+            secretKey = EncryptionUtils.generateSecretKey();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         dataBaseHelper = new DataBaseHelper(this);
 
 //        Khachhang khachhang = new Khachhang("Nguyen Duy Anh", "HN01", 10, 2023, 210, "");
-//        Khachhang khachhang1 = new Khachhang("Nguyen Duy Anh", "HN01", 11, 2023, 450, "");
+        try {
+            dataBaseHelper.addKhanhhang(new Khachhang(EncryptionUtils.encryptText("Nguyen Duy Anh", secretKey), "HN05", ""));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        dataBaseHelper.add_du_lieu_thang(new Du_lieu_thang(4, 10, 2023, 231,""));
+        dataBaseHelper.add_du_lieu_thang(new Du_lieu_thang(4, 11, 2023, 390,""));
 
 //        dataBaseHelper.addKhanhhang(new Khachhang("Pham Hong Phuc", "HN05", 11, 2023, 4550, ""));
 //        dataBaseHelper.addKhanhhang(khachhang1);
@@ -38,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        TextView tv = (TextView) findViewById(R.id.tv_name);
 //
 //        tv.setText(name);
-        setLayoutbyid(1,11,2023);
+        setLayoutbyid(4,11,2023);
 
 //        Du_lieu_thang duLieuThang = dataBaseHelper.get_du_lieu_thang(1,10,2023);
 //        Log.d("aaa", String.valueOf(duLieuThang.get_chi_so()));
@@ -70,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
         Du_lieu_thang dl_thang_nay = dataBaseHelper.get_du_lieu_thang(id_khachhang, thang, nam);
         Du_lieu_thang dl_thang_truoc = dataBaseHelper.get_du_lieu_thang(id_khachhang, thang_truoc, nam_truoc);
         Khachhang khachhang = dataBaseHelper.getKhanhhang(id_khachhang);
-        ((TextView) findViewById(R.id.tv_name)).setText(khachhang.get_name());
+        try {
+            ((TextView) findViewById(R.id.tv_name)).setText(EncryptionUtils.decryptText(khachhang.get_name(), secretKey));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         String thang_nam = thang + "/" + nam;
         ((TextView) findViewById(R.id.tv_thang_nam)).setText(thang_nam);
         ((TextView) findViewById(R.id.tv_chi_so_thang_truoc)).setText(Integer.toString(dl_thang_truoc.get_chi_so()));
