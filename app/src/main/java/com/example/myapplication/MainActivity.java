@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
 //        tv.setText(name);
         setLayoutbyid(4,11,2023);
 
-//        Du_lieu_thang duLieuThang = dataBaseHelper.get_du_lieu_thang(1,10,2023);
-//        Log.d("aaa", String.valueOf(duLieuThang.get_chi_so()));
+
 
         dataBaseHelper.close();
 
