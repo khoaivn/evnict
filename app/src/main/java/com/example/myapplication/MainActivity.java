@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.myapplication.base.DataBaseHelper;
+import com.example.myapplication.base.Du_lieu_thang;
 import com.example.myapplication.base.Khachhang;
 
 import java.io.IOException;
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //        tv.setText(name);
 //        setLayoutbyCode("HN05");
+
+        Du_lieu_thang duLieuThang = dataBaseHelper.get_du_lieu_thang(1,10,2023);
+        Log.d("aaa", String.valueOf(duLieuThang.get_chi_so()));
 
         dataBaseHelper.close();
 

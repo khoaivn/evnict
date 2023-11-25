@@ -56,6 +56,9 @@ public class Du_lieu_thang {
         this._note = _note;
     }
 
+    Du_lieu_thang(){
+
+    }
     public Du_lieu_thang(int id_khach_hang, int thang, int nam, int chi_so, String note){
         this._id_khach_hang = id_khach_hang;
         this._thang = thang;

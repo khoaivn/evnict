@@ -204,13 +204,13 @@ public class DataBaseHelper extends SQLiteOpenHelper
         db.close();
         return khachhang;
     }
-    public Khachhang get_chi_so_thang(String code_khachhang, int thang, int nam) {
-        Khachhang khachhang = new Khachhang();
+    public Du_lieu_thang get_du_lieu_thang(int id_khachhang, int thang, int nam) {
+        Du_lieu_thang duLieuThang = new Du_lieu_thang();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_KHACHHANG,
-                new String[] {KEY_ID, KEY_NAME, KEY_CODE, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
-                KEY_CODE + "=?",
-                new String[] {code_khachhang},
+                new String[] {KEY_ID, KEY_ID_KHACHHANG, KEY_THANG, KEY_NAM, KEY_CHI_SO, KEY_NOTE},
+                 KEY_ID_KHACHHANG + "=? AND " + KEY_THANG + "=? AND" + KEY_NAM + "=?" ,
+                new String[] {String.valueOf(id_khachhang), String.valueOf(thang), String.valueOf(nam)},
                 null,
                 null,
                 null,
@@ -218,14 +218,16 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         if  (cursor != null) {
             cursor.moveToFirst(); //De sai
-            khachhang.set_id(Integer.parseInt(cursor.getString(0)));
-            khachhang.set_name(cursor.getString(1));
-            khachhang.set_code(cursor.getString(2));
-            khachhang.set_note(cursor.getString(3));
+            duLieuThang.set_id(Integer.parseInt(cursor.getString(0)));
+            duLieuThang.set_id_khach_hang(Integer.parseInt(cursor.getString(1)));
+            duLieuThang.set_thang(Integer.parseInt(cursor.getString(2)));
+            duLieuThang.set_nam(Integer.parseInt(cursor.getString(3)));
+            duLieuThang.set_chi_so(Integer.parseInt(cursor.getString(4)));
+            duLieuThang.set_note(cursor.getString(5));
         }
         cursor.close();
         db.close();
-        return khachhang;
+        return duLieuThang;
     }
 
 
